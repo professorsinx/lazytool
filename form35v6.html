@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Loan Closure Letter and Form 35</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            color: #1a73e8;
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0;
+        }
+        .header img {
+            width: 50px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        .header h2 {
+            color: #555;
+            margin-top: 10px;
+        }
+        .form-container {
+            margin-bottom: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .form-group {
+            width: 48%;
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .form-group button {
+            padding: 10px 20px;
+            background-color: #1a73e8;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+        .form-group button:hover {
+            background-color: #155ab6;
+        }
+        .page {
+            page-break-after: always;
+            padding: 20px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            display: none;
+        }
+        .page h2 {
+            color: #1a73e8;
+        }
+        .content {
+            margin-bottom: 20px;
+        }
+        .content p {
+            line-height: 1.6;
+        }
+        .footer {
+            text-align: right;
+            margin-top: 40px;
+            font-weight: bold;
+        }
+        .highlight {
+            color: #1a73e8;
+        }
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .space {
+            display: inline-block;
+            width: 200px;
+        }
+        .report-date {
+            text-align: right;
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
+    <script>
+        function formatDate(date) {
+            let d = new Date(date);
+            let month = '' + (d.getMonth() + 1);
+            let day = '' + d.getDate();
+            let year = d.getFullYear();
+
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
+
+            return [month, day, year].join('-');
+        }
+
+        function formatDateTime(date) {
+            let d = new Date(date);
+            let month = '' + (d.getMonth() + 1);
+            let day = '' + d.getDate();
+            let year = d.getFullYear();
+            let hours = '' + d.getHours();
+            let minutes = '' + d.getMinutes();
+            let seconds = '' + d.getSeconds();
+
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
+            if (hours.length < 2) hours = '0' + hours;
+            if (minutes.length < 2) minutes = '0' + minutes;
+            if (seconds.length < 2) seconds = '0' + seconds;
+
+            return [month, day, year].join('-') + ' ' + [hours, minutes, seconds].join(':');
+        }
+
+        function generateLetter() {
+            let borrowerName = document.getElementById("inputBorrowerName").value;
+            let loanAccountNo = document.getElementById("inputLoanAccountNo").value;
+            let loanAmount = document.getElementById("inputLoanAmount").value;
+            let vehicleRegNo = document.getElementById("inputVehicleRegNo").value;
+            let loanClosureDate = document.getElementById("inputLoanClosureDate").value;
+            let today = formatDate(new Date());
+            let reportDateTime = formatDateTime(new Date());
+
+            document.getElementById("borrowerName").textContent = borrowerName;
+            document.getElementById("loanAccountNo").textContent = loanAccountNo;
+            document.getElementById("loanAmount").textContent = loanAmount;
+            document.getElementById("vehicleRegNo").textContent = vehicleRegNo;
+            document.getElementById("loanClosureDate").textContent = formatDate(loanClosureDate);
+            document.getElementById("form35VehicleRegNo1").textContent = vehicleRegNo;
+            document.getElementById("form35VehicleRegNo2").textContent = vehicleRegNo;
+            document.getElementById("form35Date1").textContent = today;
+            document.getElementById("form35Date2").textContent = today;
+            document.getElementById("form35Date3").textContent = today;
+            document.getElementById("form35Date4").textContent = today;
+
+            document.querySelector(".report-date").textContent = "Report generated on: " + reportDateTime;
+
+            // Show the pages
+            document.getElementById("autoLoanClosureLetter").style.display = "block";
+            document.getElementById("form35Page1").style.display = "block";
+            document.getElementById("form35Page2").style.display = "block";
+        }
+
+        document.addEventListener("keydown", function(event) {
+            if (event.ctrlKey && event.key === 'p') {
+                document.querySelector('.form-container').style.display = 'none';
+                window.print();
+                document.querySelector('.form-container').style.display = 'block';
+                event.preventDefault();
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <div class="header">
+            <h1>STATE BANK OF INDIA</h1>
+            <h2>AUTO LOAN CLOSURE LETTER FORM</h2>
+        </div>
+        <div class="form-group">
+            <label for="inputBorrowerName">Name of the Borrower:</label>
+            <input type="text" id="inputBorrowerName" placeholder="John Doe" required>
+        </div>
+        <div class="form-group">
+            <label for="inputLoanAccountNo">Loan Account No:</label>
+            <input type="text" id="inputLoanAccountNo" placeholder="1234567890" required>
+        </div>
+        <div class="form-group">
+            <label for="inputLoanAmount">Loan Amount:</label>
+            <input type="text" id="inputLoanAmount" placeholder="500,000" required>
+        </div>
+        <div class="form-group">
+            <label for="inputVehicleRegNo">Vehicle Registration No:</label>
+            <input type="text" id="inputVehicleRegNo" placeholder="TN810E3634" required>
+        </div>
+        <div class="form-group">
+            <label for="inputLoanClosureDate">Date of Loan Closure:</label>
+            <input type="date" id="inputLoanClosureDate" required>
+        </div>
+        <div class="form-group">
+            <button onclick="generateLetter()">Generate Letter</button>
+        </div>
+    </div>
+
+    <div id="autoLoanClosureLetter" class="page">
+        <div class="header">
+             
+            <h1>STATE BANK OF INDIA</h1>
+            <h2>AUTO LOAN CLOSURE LETTER</h2>
+        </div>
+        <div class="content">
+            <p>This is to certify that the auto loan account of the under-mentioned borrower is closed. You may vacate Hire-Purchase/Lease/Hypothecation charges noted in your Regional Transport Office record as well as in the Certificate of Registration of the owner of the vehicle since the Loan-cum-Hypothecation Agreement between the Bank and borrower has been terminated.</p>
+            <p><strong>Name of the Borrower:</strong> <span id="borrowerName" class="highlight"></span></p>
+            <p><strong>Loan Account No:</strong> <span id="loanAccountNo" class="highlight"></span></p>
+            <p><strong>Loan Amount:</strong> <span id="loanAmount" class="highlight"></span></p>
+            <p><strong>Vehicle Registration No:</strong> <span id="vehicleRegNo" class="highlight"></span></p>
+            <p><strong>Date of Loan Closure:</strong> <span id="loanClosureDate" class="highlight"></span></p>
+        </div>
+        <div class="footer">
+            (Signature of the Branch Manager)
+        </div>
+        <div class="report-date"></div>
+    </div>
+    <div id="form35Page1" class="page">
+        <div class="header">
+            <h2>FORM 35</h2>
+            <p>(See Rule 61(1))</p>
+        </div>
+        <div class="content">
+            <p>Notice of Termination of an Agreement of Hire Purchase/Lease/Hypothecation</p>
+            <p>To</p>
+            <p>The Registering Authority</p>
+            <p>We hereby declare that the agreement of Hire Purchase/Lease/Hypothecation entered into between us has been terminated. We therefore request that the note endorsed in the Certificate of Registration of Vehicle No. <span id="form35VehicleRegNo1" class="highlight"></span> in respect of the said Agreement between us be cancelled. The Certificate of Registration together with the fee is enclosed.</p>
+            <p>Date: <span id="form35Date1" class="highlight"></span></p>
+            <p><strong>Signature or thumb impression of the Registered Owner:</strong> <span class="space"></span></p>
+            <p>Date: <span id="form35Date2" class="highlight"></span></p>
+            <p><strong>Signature of the FINANCIER with official Seal and address:</strong> <span class="space"></span></p>
+            <p>*Strike out whichever is inapplicable</p>
+            <p>"Vehicle Owner may visit the <a href="https://parivahan.gov.in/parivahan/">https://parivahan.gov.in/parivahan/</a> portal for endorsement of hypothecation termination on the Registration Certificate."</p>
+        </div>
+    </div>
+    <div id="form35Page2" class="page">
+        <div class="header">
+            <h2>FORM 35</h2>
+            <p>(See Rule 61(1))</p>
+        </div>
+        <div class="content">
+            <p>Notice of Termination of an Agreement of Hire Purchase/Lease/Hypothecation</p>
+            <p>To</p>
+            <p>The Registering Authority</p>
+            <p>We hereby declare that the agreement of Hire Purchase/Lease/Hypothecation entered into between us has been terminated. We therefore request that the note endorsed in the Certificate of Registration of Vehicle No. <span id="form35VehicleRegNo2" class="highlight"></span> in respect of the said Agreement between us be cancelled. The Certificate of Registration together with the fee is enclosed.</p>
+            <p>Date: <span id="form35Date3" class="highlight"></span></p>
+            <p><strong>Signature or thumb impression of the Registered Owner:</strong> <span class="space"></span></p>
+            <p>Date: <span id="form35Date4" class="highlight"></span></p>
+            <p><strong>Signature of the FINANCIER with official Seal and address:</strong> <span class="space"></span></p>
+            <p>*Strike out whichever is inapplicable</p>
+            <p>"Vehicle Owner may visit the <a href="https://parivahan.gov.in/parivahan/">https://parivahan.gov.in/parivahan/</a> portal for endorsement of hypothecation termination on the Registration Certificate."</p>
+        </div>
+    </div>
+</body>
+</html>
+
